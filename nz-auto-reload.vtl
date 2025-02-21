@@ -1,0 +1,26 @@
+## Macro Name: nz-auto-reload
+## Macro Title: Auto Reload Page
+## Description: Automatically reload a page after a given time. Use this macro only once on a page.
+## Categories: Confluence content, Navigation
+## Macro Body Processing: No
+##
+## Author: MvB - https://nerdzone.nl
+## Credits: -
+## Date: 2019-07-20
+## Version: 1.0.4
+
+## @param Timeout:title=Timeout|type=int|required=true|default=60000|desc=Timeout to refresh this page in millieseconds
+## @param DisableComments:title=Disable comments|type=boolean|default=true|desc=Uncheck this if you want users to be able to add comments on this page.
+
+<script language="javascript">
+window.onload = function() {
+  setTimeout('document.location=document.location', $paramTimeout);
+}
+</script>
+#if ($paramDisableComments == true)
+ <style>
+ #comments-section {
+  display:none;
+ }
+ </style>
+#end
