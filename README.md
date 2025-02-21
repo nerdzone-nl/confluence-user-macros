@@ -9,7 +9,9 @@ But a couple of years ago our friends at [Atlassian](https://www.atlassian.com) 
 
 ## A little archive of Confluence User Macros
 
-I'm still running an old unsupported instance for convenience, but it may or may not break on serverupdates. I won't test that anymore. Therefor I created this repo, which serves as a little archive. It contains some User Macros which may be useful to you. Feel free to use any of them. Note that some of them are credited to users in the community.
+I'm still running an old unsupported instance for convenience, but it may or may not break on serverupdates. I won't test that anymore.
+
+Therefor I created this repo, which serves as a little archive. It contains some User Macros which may be useful to you. Feel free to use any of them. Note that some of them are credited to users in the community.
 
 Here's the list:
 |Filename|Description|
