@@ -1,0 +1,38 @@
+## Macro Name: nz-space-administrators
+## Macro Title: Space Administrators
+## Description: Macro to display a list of space administrators.
+## Categories: Administration
+## Macro Body Processing: No
+##
+## Author: MvB - https://nerdzone.nl
+## Credits: Andrew Frayling - https://support.atlassian.com/confluence/kb/how-to-view-a-list-of-all-space-creators-and-administrators-for-all-spaces/
+## Date: 2021-07-23
+## Version: 1.0.3
+
+## @noparams
+
+#set($containerManagerClass = $content.class.forName('com.atlassian.spring.container.ContainerManager'))
+#set($getInstanceMethod = $containerManagerClass.getDeclaredMethod('getInstance',null))
+#set($containerManager = $getInstanceMethod.invoke(null,null))
+#set($containerContext = $containerManager.containerContext)
+#set($spaces = $spaceManager.getAllSpaces())
+
+<table class="aui aui-table-interactive">
+  <tr>
+    <th class="confluenceTh">Space</th><th class="confluenceTh">Administrator(s)</th>
+  </tr>
+#foreach($spacer in $spaces)
+ #if (!$spacer.isPersonal())
+  <tr>
+    <td class="confluenceTd"><a href="$req.contextPath/display/$spacer.key">$spacer.name</a></td><td class="confluenceTd">
+      <ul>
+  #set($administrators = $spaceManager.getSpaceAdmins($spacer))
+  #foreach($admin in $administrators)
+        <li>#usernameLink($admin.name)</li>
+  #end
+      </ul>
+    </td>
+  </tr>
+ #end
+#end
+</table>
