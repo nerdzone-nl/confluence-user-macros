@@ -1,0 +1,27 @@
+## Macro Name: nz-expand-all
+## Macro Title: Expand All
+## Description: Creates a link or button to toggle all [Expand macros](https://confluence.atlassian.com/display/DOC/Expand+Macro) at once on the current page.
+## Categories: Formatting, Visuals & images
+## Macro Body Processing: No
+##
+## Author: MvB - https://nerdzone.nl
+## Credits: George Lewe - https://www.lewe.com/
+## Date: 2018-03-09
+## Version: 1.0.0
+
+## @param UseButton:title=Use a button?|type=boolean
+## @param LinkText:title=Link / button text|type=string|required=true|default=Toggle all expand macros
+
+#if ($paramUseButton == true)
+<button id="toggleAll" class="aui-button aui-button-primary">$paramLinkText</
+button>
+#else
+<a id="toggleAll" href="#">$paramLinkText</a>
+#end
+<script type="text/javascript">
+AJS.toInit(function () {
+  AJS.$('#toggleAll').click(function() {
+    jQuery(".expand-control").each(function() {jQuery(this).trigger("click");})
+  });
+});
+</script>
